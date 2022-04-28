@@ -1,0 +1,49 @@
+// Sierpinski Triangle
+
+// Hassan Bhatti
+// CSC 212
+// Spring 2022
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+// Defining the function for creating mini-triangles with recursive function
+void triangle_Sierpinski(int x){
+    // Creating a .txt file for saving the result
+    ofstream file("SierpinskiTriangle.txt");
+    // Adding the header to the file
+    file << "The following diagram depicts the Sierpinski Triangle with "<<x<<" iterations."<< endl;
+    
+    for (int b = x - 1; b >= 0; b--){
+
+        for (int i = 0; i < b; i++){
+
+            file <<" "<<" ";
+        }
+
+        for (int m = 0; (m + b) < x; m++){
+            if(m & b){
+                file<< " "<<" ";
+            }
+            else{
+                file<< "▲ ";
+            }
+        }
+
+        file<<endl;
+    }
+}
+ 
+// Main function
+int main(){
+    int a;
+    //taking the input from the user and printing the triangle
+    cout << "Enter the number of triangles: ";
+    cin >> a;
+
+    triangle_Sierpinski(a);
+
+    return 0;
+}
